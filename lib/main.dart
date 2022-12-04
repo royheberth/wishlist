@@ -1,4 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:wishlist/theme/tema.dart';
+import 'package:wishlist/screens/home_screen.dart';
+import 'package:wishlist/services/productos_service.dart';
 
 void main() => runApp(const MyApp());
 
@@ -7,16 +11,17 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: 'Whishlist',
-      home: Scaffold(
-        appBar: AppBar(
-          title: const Text('Material App Bar'),
+    return MultiProvider(
+      providers: [
+        ChangeNotifierProvider(
+          create: (_) => ProductosService(),
         ),
-        body: const Center(
-          child: Text('Hello World'),
-        ),
+      ],
+      child: MaterialApp(
+        debugShowCheckedModeBanner: false,
+        home: const HomeScreen(),
+        title: 'Whishlist APP',
+        theme: tema,
       ),
     );
   }
