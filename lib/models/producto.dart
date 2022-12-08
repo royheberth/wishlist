@@ -9,13 +9,13 @@ String productoToJson(List<Producto> data) =>
 class Producto {
   final String title;
   final double price;
-  final String description;
+  final String? description;
   final String image;
 
   Producto({
     required this.title,
     required this.price,
-    required this.description,
+    this.description,
     required this.image,
   });
 

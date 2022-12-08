@@ -1,10 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:wishlist/theme/tema.dart';
-import 'package:wishlist/screens/home_screen.dart';
+import 'package:wishlist/themes/custom_dark.dart';
+import 'package:wishlist/routes/custom_routes.dart';
 import 'package:wishlist/services/productos_service.dart';
+import 'package:wishlist/preferences.dart/custom_preferences.dart';
 
-void main() => runApp(const MyApp());
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  CustomPreferences.init();
+  runApp(const MyApp());
+}
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
@@ -18,10 +23,11 @@ class MyApp extends StatelessWidget {
         ),
       ],
       child: MaterialApp(
-        debugShowCheckedModeBanner: false,
-        home: const HomeScreen(),
-        title: 'Whishlist APP',
         theme: tema,
+        routes: CustomRoutes.routes,
+        debugShowCheckedModeBanner: false,
+        initialRoute: CustomRoutes.initialRoute,
+        onGenerateRoute: CustomRoutes.onGenerateRoute,
       ),
     );
   }

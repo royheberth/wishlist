@@ -3,7 +3,7 @@ import 'package:http/http.dart' as http;
 import 'package:wishlist/models/producto.dart';
 
 class ProductosService with ChangeNotifier {
-  List<Producto> productos = [];
+  final List<Producto> productos = [];
 
   ProductosService() {
     getProductos();

@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:wishlist/models/producto.dart';
+import 'package:wishlist/preferences.dart/custom_preferences.dart';
 import 'package:wishlist/services/productos_service.dart';
 import 'package:responsive_grid_list/responsive_grid_list.dart';
 
-class HomeScreen extends StatelessWidget {
-  const HomeScreen({super.key});
+class InicioScreen extends StatelessWidget {
+  const InicioScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -15,6 +16,12 @@ class HomeScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Wishlist'),
+        actions: [
+          IconButton(
+            onPressed: () => Navigator.pushNamed(context, 'carrito'),
+            icon: const Icon(Icons.shopping_cart_outlined),
+          )
+        ],
       ),
       body: productosService.productos.isEmpty
           ? const Center(
@@ -111,7 +118,7 @@ class ShowDataModal extends StatelessWidget {
             const SizedBox(height: 10),
             ElevatedButton(
               child: const Text("AGREGAR"),
-              onPressed: () {},
+              onPressed: () => CustomPreferences.agregarProductos(producto),
             ),
           ],
         ),
