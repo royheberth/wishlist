@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:wishlist/screens/inicio_screen.dart';
-import 'package:wishlist/screens/carrito_screen.dart';
+import 'package:wishlist/screens/screens.dart';
 
 class CustomRoutes {
   static String initialRoute = 'inicio';

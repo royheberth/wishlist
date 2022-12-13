@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:wishlist/services/carrito_service.dart';
+import 'package:wishlist/services/services.dart';
 
 class CarritoScreen extends StatelessWidget {
   const CarritoScreen({super.key});
@@ -15,13 +15,7 @@ class CarritoScreen extends StatelessWidget {
         actions: <Widget>[
           Row(
             children: [
-              Text(
-                "\$ ${carritoService.total.toStringAsFixed(2)}",
-                style: const TextStyle(
-                  color: Colors.white,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
+              Text("\$ ${carritoService.total.toStringAsFixed(2)}"),
               const SizedBox(width: 15),
             ],
           ),

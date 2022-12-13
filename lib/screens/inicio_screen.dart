@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:wishlist/models/producto.dart';
-import 'package:wishlist/services/carrito_service.dart';
-import 'package:wishlist/services/productos_service.dart';
+import 'package:wishlist/services/services.dart';
+import 'package:wishlist/preferences.dart/custom_preferences.dart';
 import 'package:responsive_grid_list/responsive_grid_list.dart';
 
 class InicioScreen extends StatelessWidget {
@@ -13,6 +13,7 @@ class InicioScreen extends StatelessWidget {
     final ProductosService productosService =
         Provider.of<ProductosService>(context);
     final CarritoService carritoService = Provider.of<CarritoService>(context);
+    final TemaService temaService = Provider.of<TemaService>(context);
 
     return Scaffold(
       appBar: AppBar(
@@ -22,10 +23,7 @@ class InicioScreen extends StatelessWidget {
             onPressed: () => Navigator.pushNamed(context, 'carrito'),
             child: Row(
               children: [
-                Text(
-                  "\$ ${carritoService.total.toStringAsFixed(2)}",
-                  style: const TextStyle(color: Colors.white),
-                ),
+                Text("\$ ${carritoService.total.toStringAsFixed(2)}"),
                 const SizedBox(width: 10),
                 const Icon(
                   Icons.shopping_cart_outlined,
@@ -33,6 +31,12 @@ class InicioScreen extends StatelessWidget {
                 ),
               ],
             ),
+          ),
+          const SizedBox(width: 15),
+          Switch.adaptive(
+            value: CustomPreferences.isDark,
+            onChanged: (value) =>
+                value ? temaService.setDarkMode() : temaService.setLightMode(),
           ),
           const SizedBox(width: 15),
         ],
@@ -128,7 +132,10 @@ class ShowDataModal extends StatelessWidget {
             const SizedBox(height: 10),
             ElevatedButton(
               child: const Text("AGREGAR"),
-              onPressed: () => carrito.agregarProducto(producto),
+              onPressed: () {
+                carrito.agregarProducto(producto);
+                Navigator.pop(context);
+              },
             ),
           ],
         ),

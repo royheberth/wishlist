@@ -3,8 +3,16 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 class CustomPreferences {
   static late SharedPreferences _prefs;
+  static bool _isDarkMode = false;
 
   static Future init() async => _prefs = await SharedPreferences.getInstance();
+
+  static bool get isDark => _prefs.getBool("isDark") ?? _isDarkMode;
+
+  static set isDark(bool isDarkMode) {
+    _isDarkMode = isDarkMode;
+    _prefs.setBool("isDark", isDarkMode);
+  }
 
   static void guardarProductos(List<Producto> productos) =>
       _prefs.setString("carrito", productoToStr(productos));
@@ -24,15 +32,4 @@ class CustomPreferences {
     }
     return total;
   }
-
-  /*static String obtenerProductos() => _prefs.getString("carrito") ?? '';
-
-  static void guardarProductos(List<Producto> productos) =>
-      _prefs.setString("carrito", productoToStr(productos));
-
-  static void agregarProducto(Producto producto) {
-    List<Producto> productosCarrito = listaProductos();
-    productosCarrito.add(producto);
-    guardarProductos(productosCarrito);
-  }*/
 }
