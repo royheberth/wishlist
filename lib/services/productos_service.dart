@@ -10,8 +10,9 @@ class ProductosService with ChangeNotifier {
   }
 
   getProductos() async {
-    const url = "https://fakestoreapi.com/products";
-    final response = await http.get(Uri.parse(url));
+    final response = await http.get(
+      Uri.parse("https://fakestoreapi.com/products"),
+    );
     final nuevosProductos = productoFromJson(response.body);
     productos.addAll(nuevosProductos);
     notifyListeners();
