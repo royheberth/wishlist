@@ -21,19 +21,11 @@
 * Tema claro
 
 <p align="center">
-
-![light front](assets/01.jpg)
-
-![light reverse](assets/02.jpg)
-
+    <img src="assets/01.jpg" alt="light mode front"/> &nbsp; <img src="assets/02.jpg" alt="light mode reverse"/>
 </p>
 
 * Tema oscuro
 
 <p align="center">
-
-![dark reverse](assets/03.jpg)
-
-![dark reverse](assets/04.jpg)
-
+    <img src="assets/03.jpg" alt="dark mode front"/> &nbsp; <img src="assets/04.jpg" alt="dark mode reverse"/>
 </p>
