@@ -1,4 +1,4 @@
-# wishlist
+# Wishlist - Lista de deseos
 
 > Flutter 3.3.9
 
@@ -14,6 +14,12 @@ http 0.13.5
 
 ## Capturas de pantalla
 
-![Light mode](https://github.com/royheberth/wishlist/tree/main/assets/01.jpg)
-
-![Dark mode](https://github.com/royheberth/wishlist/tree/main/assets/03.jpg)
+<p align="center">
+  <img src="assets/01.jpg" width="80"/>
+  &nbsp;
+  <img src="assets/02.jpg" width="80"/>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <img src="assets/03.jpg" width="80"/>
+  &nbsp;
+  <img src="assets/04.jpg" width="80"/>
+</p>
