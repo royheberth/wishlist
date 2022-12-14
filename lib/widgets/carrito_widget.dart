@@ -29,8 +29,35 @@ class CarritoWidget extends StatelessWidget {
             Shadow(color: Colors.black, offset: Offset(1, 1), blurRadius: 1)
           ],
         ),
-        onPressed: () => Provider.of<CarritoService>(context, listen: false)
-            .eliminarProducto(index),
+        onPressed: () {
+          showDialog(
+            context: context,
+            barrierDismissible: true,
+            builder: (_) => AlertDialog(
+              content: const Text("¿Está seguro de eliminar éste producto?"),
+              actions: [
+                TextButton(
+                  child: const Text(
+                    "CANCELAR",
+                    style: TextStyle(color: Colors.black54),
+                  ),
+                  onPressed: () => Navigator.pop(context),
+                ),
+                TextButton(
+                  child: const Text(
+                    "OK",
+                    style: TextStyle(color: Colors.red),
+                  ),
+                  onPressed: () {
+                    Provider.of<CarritoService>(context, listen: false)
+                        .eliminarProducto(index);
+                    Navigator.pop(context);
+                  },
+                ),
+              ],
+            ),
+          );
+        },
       ),
     );
   }

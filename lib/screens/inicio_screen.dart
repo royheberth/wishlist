@@ -48,7 +48,7 @@ class InicioScreen extends StatelessWidget {
       body: productosService.productos.isEmpty
           ? const Center(child: CircularProgressIndicator())
           : ResponsiveGridList(
-              minItemWidth: 150,
+              minItemWidth: 210,
               verticalGridMargin: 10,
               horizontalGridMargin: 40,
               children: List.generate(

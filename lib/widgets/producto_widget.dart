@@ -11,7 +11,7 @@ class ProductoWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) => Container(
         padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 8),
-        margin: const EdgeInsets.symmetric(horizontal: 20, vertical: 5),
+        margin: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
         decoration: const BoxDecoration(
           color: Colors.white,
           borderRadius: BorderRadius.all(Radius.circular(15)),
@@ -41,9 +41,26 @@ class ProductoWidget extends StatelessWidget {
             const SizedBox(height: 10),
             ElevatedButton(
               child: const Text("Agregar"),
-              onPressed: () =>
-                  Provider.of<CarritoService>(context, listen: false)
-                      .agregarProducto(producto),
+              onPressed: () {
+                Provider.of<CarritoService>(context, listen: false)
+                    .agregarProducto(producto);
+                showDialog(
+                  context: context,
+                  barrierDismissible: true,
+                  builder: (_) => AlertDialog(
+                    content: const Text("Producto agregado al carrito"),
+                    actions: [
+                      TextButton(
+                        onPressed: () => Navigator.pop(context),
+                        child: const Text(
+                          "OK",
+                          style: TextStyle(color: Colors.blue),
+                        ),
+                      ),
+                    ],
+                  ),
+                );
+              },
             ),
           ],
         ),
