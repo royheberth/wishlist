@@ -31,10 +31,10 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => MaterialApp(
-        theme: Provider.of<TemaService>(context).currentTheme,
         routes: CustomRoutes.routes,
         debugShowCheckedModeBanner: false,
         initialRoute: CustomRoutes.initialRoute,
         onGenerateRoute: CustomRoutes.onGenerateRoute,
+        theme: Provider.of<TemaService>(context).currentTheme,
       );
 }

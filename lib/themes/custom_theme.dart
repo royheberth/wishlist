@@ -10,12 +10,14 @@ final temaLight = ThemeData.light().copyWith(
   ),
   elevatedButtonTheme: ElevatedButtonThemeData(
     style: ElevatedButton.styleFrom(
-      backgroundColor: const Color(0xFF2A4742),
+      backgroundColor: const Color(0xFF259687),
+      padding: const EdgeInsets.symmetric(vertical: 15, horizontal: 50),
     ),
   ),
   textButtonTheme: TextButtonThemeData(
     style: TextButton.styleFrom(foregroundColor: Colors.white),
   ),
+  listTileTheme: const ListTileThemeData(textColor: Colors.white),
 );
 
 final temaDark = ThemeData.dark().copyWith(
@@ -28,10 +30,12 @@ final temaDark = ThemeData.dark().copyWith(
   ),
   elevatedButtonTheme: ElevatedButtonThemeData(
     style: ElevatedButton.styleFrom(
-      backgroundColor: const Color(0xFF2f7BA8),
+      backgroundColor: const Color(0xFF2A4742),
+      padding: const EdgeInsets.symmetric(vertical: 15, horizontal: 50),
     ),
   ),
   textButtonTheme: TextButtonThemeData(
     style: TextButton.styleFrom(foregroundColor: Colors.white),
   ),
+  listTileTheme: const ListTileThemeData(textColor: Colors.white),
 );

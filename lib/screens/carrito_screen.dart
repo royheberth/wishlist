@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:wishlist/services/services.dart';
+import 'package:wishlist/widgets/carrito_widget.dart';
 
 class CarritoScreen extends StatelessWidget {
   const CarritoScreen({super.key});
@@ -11,35 +12,50 @@ class CarritoScreen extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Carrito"),
+        title: const Text("DETALLES DE LA LISTA DE DESEOS"),
         actions: <Widget>[
           Row(
             children: [
-              Text("\$ ${carritoService.total.toStringAsFixed(2)}"),
+              Text(
+                "\$ ${carritoService.total.toStringAsFixed(2)}",
+                style: const TextStyle(
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+              const SizedBox(width: 15),
+              const Icon(Icons.shopping_cart_outlined),
               const SizedBox(width: 15),
             ],
           ),
         ],
       ),
-      body: ListView.separated(
-        separatorBuilder: (_, __) => const Divider(),
-        itemCount: carritoService.productos.length,
-        itemBuilder: (_, int index) => Column(
-          children: <Widget>[
-            Text(carritoService.productos[index].title),
-            const SizedBox(height: 10),
-            Text("\$ ${carritoService.productos[index].price}"),
-            const SizedBox(height: 10),
-            IconButton(
-              icon: const Icon(
-                Icons.delete_outline_outlined,
-                color: Colors.red,
+      body: carritoService.productos.isEmpty
+          ? const Center(
+              child: Text(
+                "No hay productos agregados a la lista de deseos",
+                style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  color: Colors.white,
+                  letterSpacing: 1.5,
+                  fontSize: 24,
+                  shadows: <Shadow>[
+                    Shadow(
+                      color: Colors.black,
+                      offset: Offset(1, 1),
+                      blurRadius: 1,
+                    )
+                  ],
+                ),
               ),
-              onPressed: () => carritoService.eliminarProducto(index),
+            )
+          : ListView.separated(
+              separatorBuilder: (_, __) => const Divider(),
+              itemCount: carritoService.productos.length,
+              itemBuilder: (_, int index) => CarritoWidget(
+                producto: carritoService.productos[index],
+                index: index,
+              ),
             ),
-          ],
-        ),
-      ),
     );
   }
 }
