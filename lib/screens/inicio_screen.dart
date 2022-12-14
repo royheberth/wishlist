@@ -20,7 +20,7 @@ class InicioScreen extends StatelessWidget {
         title: Row(
           children: const [
             Icon(Icons.snowboarding_rounded),
-            SizedBox(width: 15),
+            SizedBox(width: 5),
             Text("LISTA DE DESEOS"),
           ],
         ),
@@ -30,7 +30,7 @@ class InicioScreen extends StatelessWidget {
             child: Row(
               children: [
                 Text("\$ ${carritoService.total.toStringAsFixed(2)}"),
-                const SizedBox(width: 10),
+                const SizedBox(width: 5),
                 const Icon(
                   Icons.shopping_cart_checkout_sharp,
                   color: Colors.white,
@@ -38,20 +38,18 @@ class InicioScreen extends StatelessWidget {
               ],
             ),
           ),
-          const SizedBox(width: 15),
           Switch.adaptive(
             value: CustomPreferences.isDark,
             onChanged: (value) =>
                 value ? temaService.setDarkMode() : temaService.setLightMode(),
           ),
-          const SizedBox(width: 15),
         ],
       ),
       body: productosService.productos.isEmpty
           ? const Center(child: CircularProgressIndicator())
           : ResponsiveGridList(
-              minItemWidth: 190,
-              verticalGridMargin: 40,
+              minItemWidth: 150,
+              verticalGridMargin: 10,
               horizontalGridMargin: 40,
               children: List.generate(
                 productosService.productos.length,

@@ -12,7 +12,7 @@ class CarritoScreen extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text("DETALLES DE LA LISTA DE DESEOS"),
+        title: const Text("DETALLES"),
         actions: <Widget>[
           Row(
             children: [
@@ -22,9 +22,9 @@ class CarritoScreen extends StatelessWidget {
                   fontWeight: FontWeight.bold,
                 ),
               ),
-              const SizedBox(width: 15),
+              const SizedBox(width: 5),
               const Icon(Icons.shopping_cart_outlined),
-              const SizedBox(width: 15),
+              const SizedBox(width: 5),
             ],
           ),
         ],
@@ -33,6 +33,7 @@ class CarritoScreen extends StatelessWidget {
           ? const Center(
               child: Text(
                 "No hay productos agregados a la lista de deseos",
+                textAlign: TextAlign.center,
                 style: TextStyle(
                   fontWeight: FontWeight.bold,
                   color: Colors.white,
