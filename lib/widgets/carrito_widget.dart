@@ -22,10 +22,10 @@ class CarritoWidget extends StatelessWidget {
       title: Text(producto.title, style: textStyle),
       subtitle: Text(producto.price.toStringAsFixed(2), style: textStyle),
       trailing: IconButton(
-        icon: const Icon(
+        icon: Icon(
           Icons.delete_forever,
-          color: Colors.white,
-          shadows: <Shadow>[
+          color: Colors.red[200],
+          shadows: const<Shadow>[
             Shadow(color: Colors.black, offset: Offset(1, 1), blurRadius: 1)
           ],
         ),
@@ -35,11 +35,11 @@ class CarritoWidget extends StatelessWidget {
             barrierDismissible: true,
             builder: (_) => AlertDialog(
               content: const Text("¿Está seguro de eliminar éste producto?"),
-              actions: [
+              actions: <Widget>[
                 TextButton(
-                  child: const Text(
+                  child: Text(
                     "CANCELAR",
-                    style: TextStyle(color: Colors.black54),
+                    style: TextStyle(color: Colors.blue[300]),
                   ),
                   onPressed: () => Navigator.pop(context),
                 ),

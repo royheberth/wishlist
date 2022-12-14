@@ -49,7 +49,7 @@ class ProductoWidget extends StatelessWidget {
                   barrierDismissible: true,
                   builder: (_) => AlertDialog(
                     content: const Text("Producto agregado al carrito"),
-                    actions: [
+                    actions: <Widget>[
                       TextButton(
                         onPressed: () => Navigator.pop(context),
                         child: const Text(

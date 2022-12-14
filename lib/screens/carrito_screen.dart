@@ -15,12 +15,10 @@ class CarritoScreen extends StatelessWidget {
         title: const Text("DETALLES"),
         actions: <Widget>[
           Row(
-            children: [
+            children: <Widget>[
               Text(
                 "\$ ${carritoService.total.toStringAsFixed(2)}",
-                style: const TextStyle(
-                  fontWeight: FontWeight.bold,
-                ),
+                style: const TextStyle(fontWeight: FontWeight.bold),
               ),
               const SizedBox(width: 5),
               const Icon(Icons.shopping_cart_outlined),
@@ -29,34 +27,56 @@ class CarritoScreen extends StatelessWidget {
           ),
         ],
       ),
-      body: carritoService.productos.isEmpty
-          ? const Center(
-              child: Text(
-                "No hay productos agregados a la lista de deseos",
-                textAlign: TextAlign.center,
-                style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                  color: Colors.white,
-                  letterSpacing: 1.5,
-                  fontSize: 24,
-                  shadows: <Shadow>[
-                    Shadow(
-                      color: Colors.black,
-                      offset: Offset(1, 1),
-                      blurRadius: 1,
-                    )
-                  ],
-                ),
-              ),
-            )
-          : ListView.separated(
-              separatorBuilder: (_, __) => const Divider(),
-              itemCount: carritoService.productos.length,
-              itemBuilder: (_, int index) => CarritoWidget(
-                producto: carritoService.productos[index],
-                index: index,
+      body: Column(
+        children: <Widget>[
+          Expanded(
+            child: carritoService.productos.isEmpty
+                ? const Center(
+                    child: Text(
+                      "No hay productos agregados a la lista de deseos",
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        color: Colors.white,
+                        letterSpacing: 1.5,
+                        fontSize: 24,
+                        shadows: <Shadow>[
+                          Shadow(
+                            color: Colors.black,
+                            offset: Offset(1, 1),
+                            blurRadius: 1,
+                          )
+                        ],
+                      ),
+                    ),
+                  )
+                : ListView.separated(
+                    separatorBuilder: (_, __) => const Divider(),
+                    itemCount: carritoService.productos.length,
+                    itemBuilder: (_, int index) => CarritoWidget(
+                      producto: carritoService.productos[index],
+                      index: index,
+                    ),
+                  ),
+          ),
+          const SizedBox(height: 10),
+          ElevatedButton(
+            child: const Text(
+              "REALIZAR PEDIDO",
+              style: TextStyle(
+                fontWeight: FontWeight.bold,
+                letterSpacing: 1.5,
+                fontSize: 18,
+                shadows: <Shadow>[
+                  Shadow(color: Colors.black, offset: Offset(1, 1)),
+                ],
               ),
             ),
+            onPressed: () {},
+          ),
+          const SizedBox(height: 20),
+        ],
+      ),
     );
   }
 }

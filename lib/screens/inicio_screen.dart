@@ -18,7 +18,7 @@ class InicioScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Row(
-          children: const [
+          children: const <Widget>[
             Icon(Icons.snowboarding_rounded),
             SizedBox(width: 5),
             Text("LISTA DE DESEOS"),
@@ -28,7 +28,7 @@ class InicioScreen extends StatelessWidget {
           TextButton(
             onPressed: () => Navigator.pushNamed(context, 'carrito'),
             child: Row(
-              children: [
+              children: <Widget>[
                 Text("\$ ${carritoService.total.toStringAsFixed(2)}"),
                 const SizedBox(width: 5),
                 const Icon(
