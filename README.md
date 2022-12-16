@@ -1,4 +1,4 @@
-# **Wishlist - Lista de deseos**
+# **Wish list - Lista de deseos**
 
 * Lenguaje de programación: [Dart 2.18.5](https://dart.dev/)
 
@@ -21,11 +21,11 @@
 * Tema claro
 
 <p align="center">
-    <img src="assets/01.jpg" alt="light mode front"/> &nbsp; <img src="assets/02.jpg" alt="light mode reverse"/>
+    <img src="assets/light-home.png" alt="light home"/> &nbsp; <img src="assets/light-details.png" alt="light details"/> &nbsp; <img src="assets/light-delete-message.png" alt="light delete message"/>
 </p>
 
 * Tema oscuro
 
 <p align="center">
-    <img src="assets/03.jpg" alt="dark mode front"/> &nbsp; <img src="assets/04.jpg" alt="dark mode reverse"/>
+    <img src="assets/dark-home.png" alt="dark home"/> &nbsp; <img src="assets/dark-details.png" alt="dark details"/> &nbsp; <img src="assets/dark-added-message.png" alt="dark add message"/>
 </p>

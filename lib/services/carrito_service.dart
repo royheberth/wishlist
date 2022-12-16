@@ -10,6 +10,7 @@ class CarritoService with ChangeNotifier {
 
   void agregarProducto(Producto producto) {
     total += double.parse(producto.price.toStringAsFixed(2));
+    total = total.abs();
     productos.add(producto);
     CustomPreferences.guardarProductos(productos);
     notifyListeners();
@@ -17,6 +18,7 @@ class CarritoService with ChangeNotifier {
 
   void eliminarProducto(int index) {
     total -= double.parse(productos[index].price.toStringAsFixed(2));
+    total = total.abs();
     productos.removeAt(index);
     CustomPreferences.guardarProductos(productos);
     notifyListeners();

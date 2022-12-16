@@ -1,82 +1,75 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:wishlist/widgets/widgets.dart';
 import 'package:wishlist/services/services.dart';
-import 'package:wishlist/widgets/carrito_widget.dart';
 
 class CarritoScreen extends StatelessWidget {
   const CarritoScreen({super.key});
 
   @override
-  Widget build(BuildContext context) {
-    final CarritoService carritoService = Provider.of<CarritoService>(context);
-
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text("DETALLES"),
-        actions: <Widget>[
-          Row(
+  Widget build(BuildContext context) => Scaffold(
+        body: CustomBackgroundWidget(
+          isHome: false,
+          child: Column(
             children: <Widget>[
-              Text(
-                "\$ ${carritoService.total.toStringAsFixed(2)}",
-                style: const TextStyle(fontWeight: FontWeight.bold),
+              Expanded(
+                child: context.watch<CarritoService>().productos.isEmpty
+                    ? const Center(
+                        child: Text(
+                          "THERE ARE NO PRODUCTS ADDED TO THE WISH LIST",
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            color: Colors.white,
+                            letterSpacing: 1.5,
+                            fontSize: 24,
+                            shadows: <Shadow>[
+                              Shadow(
+                                color: Colors.black,
+                                offset: Offset(1, 1),
+                                blurRadius: 1,
+                              )
+                            ],
+                          ),
+                        ),
+                      )
+                    : ListView.separated(
+                        separatorBuilder: (_, __) => const Divider(),
+                        itemCount:
+                            context.watch<CarritoService>().productos.length,
+                        itemBuilder: (_, int index) => CarritoWidget(
+                          producto:
+                              context.read<CarritoService>().productos[index],
+                          index: index,
+                        ),
+                      ),
               ),
-              const SizedBox(width: 5),
-              const Icon(Icons.shopping_cart_outlined),
-              const SizedBox(width: 5),
+              const SizedBox(height: 10),
+              ElevatedButton(
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: Theme.of(context).splashColor,
+                  foregroundColor: Colors.white,
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 20,
+                    vertical: 20,
+                  ),
+                ),
+                child: const Text(
+                  "SAVE",
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    letterSpacing: 1.5,
+                    fontSize: 18,
+                    shadows: <Shadow>[
+                      Shadow(color: Colors.black, offset: Offset(1, 1)),
+                    ],
+                  ),
+                ),
+                onPressed: () {},
+              ),
+              const SizedBox(height: 20),
             ],
           ),
-        ],
-      ),
-      body: Column(
-        children: <Widget>[
-          Expanded(
-            child: carritoService.productos.isEmpty
-                ? const Center(
-                    child: Text(
-                      "No hay productos agregados a la lista de deseos",
-                      textAlign: TextAlign.center,
-                      style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        color: Colors.white,
-                        letterSpacing: 1.5,
-                        fontSize: 24,
-                        shadows: <Shadow>[
-                          Shadow(
-                            color: Colors.black,
-                            offset: Offset(1, 1),
-                            blurRadius: 1,
-                          )
-                        ],
-                      ),
-                    ),
-                  )
-                : ListView.separated(
-                    separatorBuilder: (_, __) => const Divider(),
-                    itemCount: carritoService.productos.length,
-                    itemBuilder: (_, int index) => CarritoWidget(
-                      producto: carritoService.productos[index],
-                      index: index,
-                    ),
-                  ),
-          ),
-          const SizedBox(height: 10),
-          ElevatedButton(
-            child: const Text(
-              "REALIZAR PEDIDO",
-              style: TextStyle(
-                fontWeight: FontWeight.bold,
-                letterSpacing: 1.5,
-                fontSize: 18,
-                shadows: <Shadow>[
-                  Shadow(color: Colors.black, offset: Offset(1, 1)),
-                ],
-              ),
-            ),
-            onPressed: () {},
-          ),
-          const SizedBox(height: 20),
-        ],
-      ),
-    );
-  }
+        ),
+      );
 }
