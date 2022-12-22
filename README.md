@@ -15,3 +15,9 @@
 * [Provider 6.0.5](https://pub.dev/packages/provider)
 
 * [Http 0.13.5](https://pub.dev/packages/http)
+
+## APK
+
+* [Debug](/outputs/app-debug.apk)
+
+* [Release](/outputs/app-release.apk)
