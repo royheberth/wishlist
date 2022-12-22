@@ -18,6 +18,4 @@
 
 ## APK
 
-* [Debug](/outputs/app-debug.apk)
-
 * [Release](/outputs/app-release.apk)
